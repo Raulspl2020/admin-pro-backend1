@@ -22,7 +22,7 @@ app.get('/api/usuarios',(req,res)=>{
         ok: true,
         usuarios:[{
             id:123,
-            nombre:'Fernando'
+            nombre:'Raul Rodrguez'
         }]
     })
 })
