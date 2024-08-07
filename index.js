@@ -17,10 +17,13 @@ dbconexion();
 //hospital_user
 
 
-app.get('/',(req,res)=>{
+app.get('/api/usuarios',(req,res)=>{
     res.json({
         ok: true,
-        msg: 'Hola Mundo',
+        usuarios:[{
+            id:123,
+            nombre:'Fernando'
+        }]
     })
 })
 
