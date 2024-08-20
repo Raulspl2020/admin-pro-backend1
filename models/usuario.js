@@ -35,7 +35,16 @@ const UsuarioSchema = Schema({
     }
 });
 
-module.exports=model('Usuario', UsuarioSchema);
+// como extraer campos para que no se muestren
+UsuarioSchema.method('toJSON', function () {
+    const { __v, _id, password, ...object } = this.toObject();
+    object.uid = _id;
+    object.clave = password;
+    return object;
+})
+
+
+module.exports = model('Usuario', UsuarioSchema);
 
 
 

@@ -6,27 +6,21 @@ const {dbconexion}=require('./database/config')
 
 const app=express();
 
+//los midelwar son funciones que se ejecutan antes de llagr a otras
+
 // configurar CORS
 app.use(cors())
+
+//Lectura y parseo del body
+app.use(express.json());
 
 //BASE DE DATOS
 dbconexion();
 
-//console.log(process.env);
-//QAZRFV1209
-//hospital_user
 
-
-app.get('/api/usuarios',(req,res)=>{
-    res.json({
-        ok: true,
-        usuarios:[{
-            id:123,
-            nombre:'Raul Rodrguez'
-        }]
-    })
-})
-
+//Rutas
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/login', require('./routes/auth'));
 
 
 app.listen( process.env.DB_PORT, () => {
